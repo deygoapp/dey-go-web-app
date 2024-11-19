@@ -1,0 +1,209 @@
+/* General Styles */
+.signup-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Mona Sans', sans-serif;
+  }
+  
+  .main-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Mona Sans', sans-serif;
+  }
+  .icon-section{  display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Mona Sans', sans-serif;
+}
+  
+  .back-button {
+    position: relative;
+    left: -200px;
+    top: 55px;
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* Icon Section */
+  .icon-section {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  /* Title Text */
+  .title-text {
+    text-align: center;
+    color: #302F2F;
+    font-size: 24px;
+    margin: 20px;
+    width: 300px;
+  }
+  
+  /* Input Container */
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 120%;
+    max-width: 400px;
+  }
+  
+  .input-field {
+    position: relative;
+  }
+  
+  .input-box {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 10px;
+    font-size: 16px;
+  }
+  
+  .input-label {
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    background-color: white;
+    padding: 0 5px;
+    color: #333;
+    font-size: 14px;
+  }
+  
+ /* OR Divider */
+.or-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+    gap: 10px;
+    width: 100%;
+}
+
+.or-divider-line {
+    flex: 1;
+    height: 1px;
+    background: #333; /* Adjust color if needed */
+}
+
+.or-text {
+    color: #333; /* Adjust color if needed */
+    font-size: 14px;
+    padding: 0 5px;
+}
+
+  
+  /* Continue Button */
+  .continue-button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #302F2F;
+    padding: 10px;
+    border-radius: 10px;
+    width: 110%;
+    max-width: 450px;
+    justify-content: center;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+  
+  .continue-text {
+    color: #302F2F;
+    font-size: 18px;
+    font-weight: 400;
+
+  }
+  
+  .social-icons {
+    display: flex;
+    gap: 5px;
+  }
+  
+  .social-icon {
+    width: 90px;
+    height: 32px;
+    background-size: cover;
+    background-image: url(../assets/images/google-logo.png);
+  }
+  
+  /* Create Account Button */
+/* Disabled Create Account Button */
+.create-account-button:disabled {
+  background-color: rgba(251, 61, 61, 0.13);
+  color: #ccc; /* Optionally adjust the text color for disabled state */
+}
+
+/* Enabled Create Account Button */
+.create-account-button {
+  background-color: #FB3D3D;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  width: 120%;
+  max-width: 400px;
+  margin-top: 20px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+  @media (max-width: 600px) {
+    .signup-page {
+      padding:50px;
+    }
+    .back-button{
+      margin-left: 100px;
+    }
+    .input-container{
+      width: 100%;
+      max-width: 400px;
+      gap: 40px;
+      padding: 20px;
+    }
+   .input-box{
+    padding: 20px;
+    width: 90%;
+   }
+    .continue-button{
+      width: 90%;
+      margin-left: 0;
+    }
+    .create-account-button{
+      width: 100%;
+      margin-left: 0;
+    }
+  }
+ 
+ /* Password Toggle */
+ .toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 0px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+
+.toggle-password img {
+  width: 20px;
+  height: 20px;
+}
+
+  

@@ -1,0 +1,62 @@
+.set-pin-page {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .set-pin-page input {
+    width: 63px;
+    height: 64px;
+    border-radius: 7px;
+    border: 1px solid #444444;
+    text-align: center;
+    font-size: 24px;
+    margin: 0 5px;
+  }
+  
+
+  .set-pin-page button:disabled {
+    background-color: rgba(251, 61, 61, 0.13);
+    color: #ccc; /* Optionally adjust the text color for disabled state */
+  }
+  
+  /* Enabled Create Account Button */
+  .set-pin-page button {
+    background-color: #FB3D3D;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 20px;
+    cursor: pointer;
+    margin-left: 20px;
+  }  
+  @media (max-width: 600px) {
+    .set-pin-page{
+        padding: 20px;
+        position: relative;
+        margin-top: 20%;
+    }
+    .set-pin-page input
+    {
+        max-width: 100%;
+        margin-top: 50px;
+    }
+    .set-pin-page button {
+        background-color: #FB3D3D;
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        border: none;
+        padding: 20px;
+        border-radius: 10px;
+        width: 90%;
+        max-width: 400px;
+        margin-top: 100px;
+        cursor: pointer;
+      
+      }  
+  }
