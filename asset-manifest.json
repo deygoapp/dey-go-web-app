@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/dey-go-web-app/static/css/main.b14f0f98.css",
+    "main.js": "/dey-go-web-app/static/js/main.a1415def.js",
+    "index.html": "/dey-go-web-app/index.html",
+    "static/media/eye-slash.svg": "/dey-go-web-app/static/media/eye-slash.a80c4a9fbb65bf923b72e8fb377c8bfe.svg",
+    "main.b14f0f98.css.map": "/dey-go-web-app/static/css/main.b14f0f98.css.map",
+    "main.a1415def.js.map": "/dey-go-web-app/static/js/main.a1415def.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b14f0f98.css",
+    "static/js/main.a1415def.js"
+  ]
+}
