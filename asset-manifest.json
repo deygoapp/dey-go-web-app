@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/dey-go-web-app/static/css/main.b14f0f98.css",
-    "main.js": "/dey-go-web-app/static/js/main.a1415def.js",
-    "index.html": "/dey-go-web-app/index.html",
-    "static/media/eye-slash.svg": "/dey-go-web-app/static/media/eye-slash.a80c4a9fbb65bf923b72e8fb377c8bfe.svg",
-    "main.b14f0f98.css.map": "/dey-go-web-app/static/css/main.b14f0f98.css.map",
-    "main.a1415def.js.map": "/dey-go-web-app/static/js/main.a1415def.js.map"
+    "main.css": "/static/css/main.b14f0f98.css",
+    "main.js": "/static/js/main.7f68aa8b.js",
+    "static/media/eye-slash.svg": "/static/media/eye-slash.a80c4a9fbb65bf923b72e8fb377c8bfe.svg",
+    "index.html": "/index.html",
+    "main.b14f0f98.css.map": "/static/css/main.b14f0f98.css.map",
+    "main.7f68aa8b.js.map": "/static/js/main.7f68aa8b.js.map"
   },
   "entrypoints": [
     "static/css/main.b14f0f98.css",
-    "static/js/main.a1415def.js"
+    "static/js/main.7f68aa8b.js"
   ]
 }
