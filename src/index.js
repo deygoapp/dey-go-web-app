@@ -1,13 +1,12 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client'; // Import createRoot
-import { BrowserRouter } from 'react-router-dom';
+import { createRoot } from 'react-dom/client';
+import { HashRouter } from 'react-router-dom'; // Use HashRouter here
 import App from './App';
 
-
 const container = document.getElementById('root');
-const root = createRoot(container); // Create a root for React 18
+const root = createRoot(container);
 root.render(
-  <BrowserRouter>
+  <HashRouter>
     <App />
-  </BrowserRouter>
+  </HashRouter>
 );

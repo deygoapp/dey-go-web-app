@@ -1,12 +1,10 @@
-// src/App.js
 import React from 'react';
-import Routes from './Routes';
-
+import AppRoutes from './Routes';
 
 function App() {
   return (
-    <div className="App">
-      <Routes />
+    <div>
+      <AppRoutes />
     </div>
   );
 }

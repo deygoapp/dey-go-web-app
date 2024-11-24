@@ -35,13 +35,23 @@ function SignUpPage() {
       setErrorMessage(null);
 
       try {
+        // Log formData to ensure correct values
+        console.log('FormData being sent:', formData);
+
+        // Adjust payload if backend expects specific keys
+        const payload = {
+          name: formData.name,
+          email: formData.emailOrPhone, // Change key if the backend requires "email"
+          password: formData.password
+        };
+
         const response = await axios.post(
-          'https://tozdti5qo7.execute-api.us-east-1.amazonaws.com/Prod/api/auth/register', // Corrected endpoint
-          formData,
+          'https://tozdti5qo7.execute-api.us-east-1.amazonaws.com/Prod/api/auth/register',
+          payload,
           {
             headers: {
               'Content-Type': 'application/json',
-              Authorization: 'Bearer key' // Replace with a valid token if required
+              Authorization: 'Bearer key' // Replace with valid token if needed
             }
           }
         );
