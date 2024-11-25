@@ -1,60 +1,58 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './SetPinPage.css';
-import backButtonImage from '../assets/images/back.png';  // Your back button image
-import logoImage from '../assets/images/Dey-go logo.png';  // Your logo image
+import backButtonImage from '../assets/images/back.png'; 
+import logoImage from '../assets/images/Dey-go logo.png';  
 import success from '../assets/images/successful.png'
 
 function ConfirmPinPage() {
-  // State to store pin values
+
   const [pin, setPin] = useState(['', '', '', '']);
-  // State to track if the PIN is confirmed
+ 
   const [pinConfirmed, setPinConfirmed] = useState(false);
 
-  // Refs to input fields to handle focus programmatically
-  const inputRefs = useRef([]);
   
-  // Hook to navigate to other pages
+  const inputRefs = useRef([]);
+
   const navigate = useNavigate();
 
-  // Handle input change
+ 
   const handlePinChange = (e, index) => {
     const value = e.target.value;
 
-    // Check if the input is a valid number and has length of 1
+   
     if (value === '' || /^[0-9]$/.test(value)) {
       const newPin = [...pin];
-      newPin[index] = value;  // Update the specific pin input box
+      newPin[index] = value;  
       setPin(newPin);
 
-      // Move focus to the next input if the current input has a value
+     
       if (value && index < pin.length - 1) {
-        inputRefs.current[index + 1].focus(); // Focus on the next input field
+        inputRefs.current[index + 1].focus(); 
       }
     }
   };
 
-  // Handle confirming the pin
+
   const handleConfirmPin = () => {
     if (pin.every(digit => digit !== '')) {
-      setPinConfirmed(true);  // Set pin as confirmed
+      setPinConfirmed(true);  
     } else {
       alert('Please enter all digits.');
     }
   };
 
   const handleLoginRedirect = () => {
-    navigate('/login');  // Redirect to login page
+    navigate('/login');  
   };
 
   return (
     <div className="set-pin-page">
-      {/* Back Button */}
+   
       <div className="back-button" onClick={() => window.history.back()}>
         <img src={backButtonImage} alt="Back" />
       </div>
 
-      {/* Title for Set Pin */}
       {!pinConfirmed && (
         <div className="main-container">
           <div className="icon-section">
@@ -65,10 +63,9 @@ function ConfirmPinPage() {
         </div>
       )}
 
-      {/* Title for Confirm Pin */}
       {!pinConfirmed && <h2>Please set CONFIRM to secure your account</h2>}
 
-      {/* Pin Input Fields */}
+   
       {!pinConfirmed && (
         <div className="pin-input-container">
           {pin.map((digit, index) => (
@@ -85,14 +82,12 @@ function ConfirmPinPage() {
         </div>
       )}
 
-      {/* Confirm Pin Button */}
       {!pinConfirmed && (
         <button onClick={handleConfirmPin} className="set-pin-button">
           Confirm
         </button>
       )}
 
-      {/* Modal - Only visible after PIN confirmation */}
       {pinConfirmed && (
         <div className="modal">
           <div className="modal-content">

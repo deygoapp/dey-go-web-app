@@ -16,7 +16,7 @@ function SignUpPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
-  const [passwordError, setPasswordError] = useState(null); // State for password error
+  const [passwordError, setPasswordError] = useState(null); 
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
