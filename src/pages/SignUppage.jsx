@@ -9,49 +9,50 @@ import eyeSlashIcon from '../assets/images/eye-slash.svg';
 
 function SignUpPage() {
   const [formData, setFormData] = useState({
-    name: '',
-    emailOrPhone: '',
+    username: '', 
+    email: '', 
     password: ''
   });
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [passwordError, setPasswordError] = useState(null); // State for password error
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
+    if (name === 'password' && value.length < 8) {
+      setPasswordError('Password must be at least 8 characters long.');
+    } else {
+      setPasswordError(null);
+    }
   };
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
-  const allFieldsFilled = formData.name && formData.emailOrPhone && formData.password;
+  const allFieldsFilled = formData.username && formData.email && formData.password;
 
   const handleCreateAccount = async () => {
-    if (allFieldsFilled) {
+    if (allFieldsFilled && !passwordError) {
       setLoading(true);
       setErrorMessage(null);
 
       try {
-        // Log formData to ensure correct values
-        console.log('FormData being sent:', formData);
-
-        // Adjust payload if backend expects specific keys
         const payload = {
-          name: formData.name,
-          email: formData.emailOrPhone, // Change key if the backend requires "email"
+          username: formData.username,
+          email: formData.email,
           password: formData.password
         };
 
         const response = await axios.post(
           'https://tozdti5qo7.execute-api.us-east-1.amazonaws.com/Prod/api/auth/register',
-          payload,
+          JSON.stringify(payload), 
           {
             headers: {
-              'Content-Type': 'application/json',
-              Authorization: 'Bearer key' // Replace with valid token if needed
+              'Content-Type': 'application/json' 
             }
           }
         );
@@ -102,24 +103,24 @@ function SignUpPage() {
               type="text"
               className="input-box"
               placeholder=" "
-              name="name"
-              value={formData.name}
+              name="username"
+              value={formData.username}
               onChange={handleInputChange}
               required
             />
-            <label className="input-label">Name</label>
+            <label className="input-label">Username</label>
           </div>
           <div className="input-field">
             <input
               type="email"
               className="input-box"
               placeholder=" "
-              name="emailOrPhone"
-              value={formData.emailOrPhone}
+              name="email"
+              value={formData.email}
               onChange={handleInputChange}
               required
             />
-            <label className="input-label">Email or Phone Number</label>
+            <label className="input-label">Email</label>
           </div>
           <div className="input-field">
             <input
@@ -130,6 +131,7 @@ function SignUpPage() {
               value={formData.password}
               onChange={handleInputChange}
               required
+              minLength="8" // Ensures password is at least 8 characters
               pattern="^(?=.*\\d)(?=.*[a-zA-Z]).{8,}$"
               title="Password must be at least 8 characters long and include at least one number"
             />
@@ -143,8 +145,8 @@ function SignUpPage() {
           </div>
         </div>
 
+        {passwordError && <div className="error-message">{passwordError}</div>}
         {errorMessage && <div className="error-message">{errorMessage}</div>}
-
         <div className="or-divider">
           <div className="or-divider-line"></div>
           <span className="or-text">OR</span>
@@ -162,10 +164,10 @@ function SignUpPage() {
           className="create-account-button"
           onClick={handleCreateAccount}
           style={{
-            backgroundColor: allFieldsFilled ? '#FB3D3D' : 'rgba(251, 61, 61, 0.13)',
-            color: allFieldsFilled ? 'white' : 'rgba(0, 0, 0, 0.3)'
+            backgroundColor: allFieldsFilled && !passwordError ? '#FB3D3D' : 'rgba(251, 61, 61, 0.13)',
+            color: allFieldsFilled && !passwordError ? 'white' : 'rgba(0, 0, 0, 0.3)'
           }}
-          disabled={!allFieldsFilled || loading}
+          disabled={!allFieldsFilled || passwordError || loading}
         >
           {loading ? 'Creating...' : 'Create Account'}
         </button>
