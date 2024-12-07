@@ -18,7 +18,7 @@
     color: #ccc;
   }
   
-  /* Confirm Button Style */
+ 
   .set-pin-page button {
     background-color: #FB3D3D;
     color: white;
@@ -33,7 +33,7 @@
     cursor: pointer;
   }
   
-  /* Modal Styles */
+
   .modal {
     display: flex;
     justify-content: center;
@@ -77,12 +77,12 @@
   }
   
   .modal-text {
-    font-size: 32px; /* Increased text size */
+    font-size: 32px; 
     color: #333333;
     font-family: 'Mona Sans', sans-serif;
     font-weight: 600;
-    line-height: 28px; /* Adjusted line height for better readability */
-    margin-top: 70px; /* Added margin at the top */
+    line-height: 28px;
+    margin-top: 70px; 
   }
   
   .login-button {
@@ -96,7 +96,7 @@
     cursor: pointer;
   }
   
-  /* Mobile View */
+
   @media (max-width: 600px) {
     .set-pin-page {
       padding: 20px;
@@ -130,12 +130,12 @@
     }
   
     .modal-text {
-      font-size: 32px; /* Increased font size for mobile view */
+      font-size: 32px; 
       color: #333333;
       font-family: 'Mona Sans', sans-serif;
       font-weight: 600;
-      line-height: 28px; /* Adjusted line height for better readability */
-      margin-top: 70px; /* Added margin-top for mobile */
+      line-height: 28px;
+      margin-top: 70px;
     }
   }
   

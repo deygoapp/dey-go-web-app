@@ -1,4 +1,3 @@
-/* General Styles */
 .signup-page {
     display: flex;
     flex-direction: column;
@@ -35,14 +34,13 @@
     color: #333;
   }
   
-  /* Icon Section */
+
   .icon-section {
     display: flex;
     gap: 10px;
     margin-top: 20px;
   }
-  
-  /* Title Text */
+
   .title-text {
     text-align: center;
     color: #302F2F;
@@ -50,8 +48,7 @@
     margin: 20px;
     width: 300px;
   }
-  
-  /* Input Container */
+
   .input-container {
     display: flex;
     flex-direction: column;
@@ -82,7 +79,7 @@
     font-size: 14px;
   }
   
- /* OR Divider */
+
 .or-divider {
     display: flex;
     align-items: center;
@@ -95,17 +92,17 @@
 .or-divider-line {
     flex: 1;
     height: 1px;
-    background: #333; /* Adjust color if needed */
+    background: #333; 
 }
 
 .or-text {
-    color: #333; /* Adjust color if needed */
+    color: #333; 
     font-size: 14px;
     padding: 0 5px;
 }
 
   
-  /* Continue Button */
+
   .continue-button {
     display: flex;
     align-items: center;
@@ -139,14 +136,13 @@
     background-image: url(../assets/images/google-logo.png);
   }
   
-  /* Create Account Button */
-/* Disabled Create Account Button */
+  
 .create-account-button:disabled {
   background-color: rgba(251, 61, 61, 0.13);
-  color: #ccc; /* Optionally adjust the text color for disabled state */
+  color: #ccc;
 }
 
-/* Enabled Create Account Button */
+
 .create-account-button {
   background-color: #FB3D3D;
   color: white;
@@ -189,7 +185,7 @@
     }
   }
  
- /* Password Toggle */
+
  .toggle-password {
   position: absolute;
   top: 50%;
@@ -205,5 +201,9 @@
   width: 20px;
   height: 20px;
 }
-
-  
+.Login{
+  margin-top: 10px;
+}
+.login-footer{
+  margin-top: 10px;
+}

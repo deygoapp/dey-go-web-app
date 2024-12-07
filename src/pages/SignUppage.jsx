@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import './SignUpPage.css';
 import backButtonImage from '../assets/images/back.png';
@@ -131,7 +131,7 @@ function SignUpPage() {
               value={formData.password}
               onChange={handleInputChange}
               required
-              minLength="8" // Ensures password is at least 8 characters
+              minLength="8" 
               pattern="^(?=.*\\d)(?=.*[a-zA-Z]).{8,}$"
               title="Password must be at least 8 characters long and include at least one number"
             />
@@ -174,6 +174,9 @@ function SignUpPage() {
 
         <div className="square-icon">
           <div className="square-icon-inner"></div>
+        </div>
+        <div className="Login">
+          Already have an account? <Link to="/login" className="login-link">Login</Link>
         </div>
       </div>
     </div>

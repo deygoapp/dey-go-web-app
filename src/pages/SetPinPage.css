@@ -16,10 +16,10 @@
 
   .set-pin-page button:disabled {
     background-color: rgba(251, 61, 61, 0.13);
-    color: #ccc; /* Optionally adjust the text color for disabled state */
+    color: #ccc; 
   }
   
-  /* Enabled Create Account Button */
+
   .set-pin-page button {
     background-color: #FB3D3D;
     color: white;

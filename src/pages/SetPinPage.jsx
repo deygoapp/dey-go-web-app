@@ -17,20 +17,18 @@ function SetPinPage() {
   const handlePinChange = (e, index) => {
     const value = e.target.value;
 
-    // Check if the input is a valid number and has length of 1
     if (value === '' || /^[0-9]$/.test(value)) {
       const newPin = [...pin];
-      newPin[index] = value;  // Update the specific pin input box
+      newPin[index] = value;  
       setPin(newPin);
 
-      // Move focus to the next input if the current input has a value
       if (value && index < pin.length - 1) {
-        inputRefs.current[index + 1].focus(); // Focus on the next input field
+        inputRefs.current[index + 1].focus();
       }
     }
   };
 
-  // Handle form submission 
+
   const handleSetPin = () => {
     if (pin.every(digit => digit !== '')) {
       navigate('/confirm-pin');
@@ -57,7 +55,7 @@ function SetPinPage() {
 
       <h2>Please set PIN to secure your account</h2>
 
-      {/* Pin Input Fields */}
+
       <div className="pin-input-container">
         {pin.map((digit, index) => (
           <input
@@ -66,13 +64,13 @@ function SetPinPage() {
             maxLength={1}
             value={digit}
             onChange={(e) => handlePinChange(e, index)}
-            ref={(el) => inputRefs.current[index] = el} // Store refs for inputs
+            ref={(el) => inputRefs.current[index] = el}
             className="pin-input"
           />
         ))}
       </div>
 
-      {/* Set Pin Button */}
+   
       <button
         onClick={handleSetPin}
         className="set-pin-button"

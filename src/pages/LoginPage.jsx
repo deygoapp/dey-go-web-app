@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import the useNavigate hook
+import { useNavigate, Link } from 'react-router-dom';
 import './SignUpPage.css';
 import backButtonImage from '../assets/images/back.png';
 import logoImage from '../assets/images/Dey-go logo.png';
@@ -13,7 +13,7 @@ function LoginPage() {
     password: ''
   });
   const [showPassword, setShowPassword] = useState(false);
-  const navigate = useNavigate(); // Initialize navigation
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -24,13 +24,11 @@ function LoginPage() {
     setShowPassword(!showPassword);
   };
 
-  // Check if all fields are filled
-  const allFieldsFilled = formData.name && formData.emailOrPhone && formData.password;
+  const allFieldsFilled = formData.emailOrPhone && formData.password;
 
-  // Handle button click to navigate to the Create Pin page
   const handleCreateAccount = () => {
     if (allFieldsFilled) {
-      navigate('/set-pin'); // Navigate to Create Pin page
+      navigate('/set-pin');
     }
   };
 
@@ -51,9 +49,7 @@ function LoginPage() {
           <div className="circle-inner"></div>
         </div>
 
-        <div className="title-text">
-        Login to your account
-        </div>
+        <div className="title-text">Login to your account</div>
 
         <div className="input-container">
           <div className="input-field">
@@ -100,13 +96,12 @@ function LoginPage() {
           <span className="continue-text">Continue with</span>
           <div className="social-icons">
             <div className="social-icon"></div>
-            {/* Add other social icons here */}
           </div>
         </div>
 
         <button
           className="create-account-button"
-          onClick={handleCreateAccount} // Trigger navigation on click
+          onClick={handleCreateAccount}
           style={{
             backgroundColor: allFieldsFilled ? '#FB3D3D' : 'rgba(251, 61, 61, 0.13)',
             color: allFieldsFilled ? 'white' : 'rgba(0, 0, 0, 0.3)'
@@ -118,6 +113,12 @@ function LoginPage() {
 
         <div className="square-icon">
           <div className="square-icon-inner"></div>
+        </div>
+
+        <div className="login-footer">
+          <Link to="/forgot-password" className="login-link">
+            Forgot Password?
+          </Link>
         </div>
       </div>
     </div>
