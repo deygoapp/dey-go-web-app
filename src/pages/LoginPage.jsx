@@ -8,11 +8,12 @@ import eyeSlashIcon from '../assets/images/eye-slash.svg';
 
 function LoginPage() {
   const [formData, setFormData] = useState({
-    name: '',
-    emailOrPhone: '',
-    password: ''
+    email: '', 
+    password: '',
   });
   const [showPassword, setShowPassword] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
@@ -24,11 +25,41 @@ function LoginPage() {
     setShowPassword(!showPassword);
   };
 
-  const allFieldsFilled = formData.emailOrPhone && formData.password;
+  const allFieldsFilled = formData.email && formData.password;
 
-  const handleCreateAccount = () => {
+  const handleLogin = async () => {
     if (allFieldsFilled) {
-      navigate('/set-pin');
+      setIsLoading(true);
+      setErrorMessage('');
+
+      try {
+        const response = await fetch(
+          'https://5dcul9h4qe.execute-api.us-east-1.amazonaws.com/beta/api/auth/login',
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              email: formData.email, // Updated key
+              password: formData.password,
+            }),
+          }
+        );
+
+        const result = await response.json();
+
+        if (response.ok) {
+          // Redirect user on successful login
+          navigate('/dashboard'); // when there is dash board
+        } else {
+          setErrorMessage(result.message || 'Failed to login. Please try again.');
+        }
+      } catch (error) {
+        setErrorMessage('An error occurred. Please try again later.');
+      } finally {
+        setIsLoading(false);
+      }
     }
   };
 
@@ -44,11 +75,6 @@ function LoginPage() {
           </div>
         </div>
 
-        <div className="circle">
-          <div className="circle-background"></div>
-          <div className="circle-inner"></div>
-        </div>
-
         <div className="title-text">Login to your account</div>
 
         <div className="input-container">
@@ -57,63 +83,48 @@ function LoginPage() {
               type="email"
               className="input-box"
               placeholder=" "
-              name="emailOrPhone"
-              value={formData.emailOrPhone}
+              name="email" // Set to email
+              value={formData.email}
               onChange={handleInputChange}
               required
             />
-            <label className="input-label">Email or Phone Number</label>
+            <label className="input-label">Email</label>
           </div>
           <div className="input-field">
             <input
-              type={showPassword ? "text" : "password"}
+              type={showPassword ? 'text' : 'password'}
               className="input-box"
               placeholder=" "
               name="password"
               value={formData.password}
               onChange={handleInputChange}
               required
-              pattern="^(?=.*\d)(?=.*[a-zA-Z]).{8,}$"
+              pattern="^(?=.*\\d)(?=.*[a-zA-Z]).{8,}$"
               title="Password must be at least 8 characters long and include at least one number"
             />
             <label className="input-label">Password</label>
             <button type="button" className="toggle-password" onClick={togglePasswordVisibility}>
               <img
                 src={showPassword ? eyeIcon : eyeSlashIcon}
-                alt={showPassword ? "Hide Password" : "Show Password"}
+                alt={showPassword ? 'Hide Password' : 'Show Password'}
               />
             </button>
           </div>
         </div>
 
-        <div className="or-divider">
-          <div className="or-divider-line"></div>
-          <span className="or-text">OR</span>
-          <div className="or-divider-line"></div>
-        </div>
-
-        <div className="continue-button">
-          <span className="continue-text">Continue with</span>
-          <div className="social-icons">
-            <div className="social-icon"></div>
-          </div>
-        </div>
+        {errorMessage && <div className="error-message">{errorMessage}</div>}
 
         <button
           className="create-account-button"
-          onClick={handleCreateAccount}
+          onClick={handleLogin}
           style={{
             backgroundColor: allFieldsFilled ? '#FB3D3D' : 'rgba(251, 61, 61, 0.13)',
-            color: allFieldsFilled ? 'white' : 'rgba(0, 0, 0, 0.3)'
+            color: allFieldsFilled ? 'white' : 'rgba(0, 0, 0, 0.3)',
           }}
-          disabled={!allFieldsFilled}
+          disabled={!allFieldsFilled || isLoading}
         >
-          Login
+          {isLoading ? 'Logging in...' : 'Login'}
         </button>
-
-        <div className="square-icon">
-          <div className="square-icon-inner"></div>
-        </div>
 
         <div className="login-footer">
           <Link to="/forgot-password" className="login-link">

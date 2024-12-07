@@ -88,10 +88,7 @@ function SignUpPage() {
           </div>
         </div>
 
-        <div className="circle">
-          <div className="circle-background"></div>
-          <div className="circle-inner"></div>
-        </div>
+       
 
         <div className="title-text">
           To access this feature, please create an account

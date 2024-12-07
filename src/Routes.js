@@ -4,7 +4,7 @@ import SignUpPage from './pages/SignUppage';
 import SetPinPage from './pages/SetPinPage';
 import ConfirmPinPage from './pages/ConfirmPinPage';
 import LoginPage from './pages/LoginPage';
-import ForgotPasswordPage from './pages/Forgotpassword'
+import ForgotPasswordPage from './pages/ForgotPassword';
 
 function AppRoutes() {
   return (

@@ -207,3 +207,37 @@
 .login-footer{
   margin-top: 10px;
 }
+.login-footer {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-text {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.signup-link {
+  font-weight: bold;
+  color: #fb3d3d;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.signup-link:hover {
+  color: #c32c2c;
+}
+
+.forgot-password-link {
+  font-size: 14px;
+  color: #fb3d3d;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.forgot-password-link:hover {
+  color: #c32c2c;
+}
