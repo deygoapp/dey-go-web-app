@@ -34,7 +34,7 @@ function LoginPage() {
 
       try {
         const response = await fetch(
-          'https://5dcul9h4qe.execute-api.us-east-1.amazonaws.com/beta/api/auth/login',
+          'https://tozdti5qo7.execute-api.us-east-1.amazonaws.com/Prod/api/auth/login',
           {
             method: 'POST',
             headers: {
@@ -83,7 +83,7 @@ function LoginPage() {
               type="email"
               className="input-box"
               placeholder=" "
-              name="email" // Set to email
+              name="email" 
               value={formData.email}
               onChange={handleInputChange}
               required
