@@ -8,7 +8,7 @@ import eyeSlashIcon from '../assets/images/eye-slash.svg';
 
 function LoginPage() {
   const [formData, setFormData] = useState({
-    email: '', 
+    username: '', 
     password: '',
   });
   const [showPassword, setShowPassword] = useState(false);
@@ -25,7 +25,7 @@ function LoginPage() {
     setShowPassword(!showPassword);
   };
 
-  const allFieldsFilled = formData.email && formData.password;
+  const allFieldsFilled = formData.username && formData.password;
 
   const handleLogin = async () => {
     if (allFieldsFilled) {
@@ -41,7 +41,7 @@ function LoginPage() {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              email: formData.email, // Updated key
+              username: formData.username, 
               password: formData.password,
             }),
           }
@@ -50,8 +50,7 @@ function LoginPage() {
         const result = await response.json();
 
         if (response.ok) {
-          // Redirect user on successful login
-          navigate('/dashboard'); // when there is dash board
+          navigate('/dashboard'); // Redirect user on successful login
         } else {
           setErrorMessage(result.message || 'Failed to login. Please try again.');
         }
@@ -80,15 +79,15 @@ function LoginPage() {
         <div className="input-container">
           <div className="input-field">
             <input
-              type="email"
+              type="text"
               className="input-box"
               placeholder=" "
-              name="email" 
-              value={formData.email}
+              name="username" 
+              value={formData.username}
               onChange={handleInputChange}
               required
             />
-            <label className="input-label">Email</label>
+            <label className="input-label">Username</label>
           </div>
           <div className="input-field">
             <input
