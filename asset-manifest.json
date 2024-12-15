@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/dey-go-web-app/static/css/main.95626101.css",
-    "main.js": "/dey-go-web-app/static/js/main.2a4b277a.js",
+    "main.js": "/dey-go-web-app/static/js/main.f7a1a90e.js",
     "index.html": "/dey-go-web-app/index.html",
     "static/media/eye-slash.svg": "/dey-go-web-app/static/media/eye-slash.a80c4a9fbb65bf923b72e8fb377c8bfe.svg",
     "main.95626101.css.map": "/dey-go-web-app/static/css/main.95626101.css.map",
-    "main.2a4b277a.js.map": "/dey-go-web-app/static/js/main.2a4b277a.js.map"
+    "main.f7a1a90e.js.map": "/dey-go-web-app/static/js/main.f7a1a90e.js.map"
   },
   "entrypoints": [
     "static/css/main.95626101.css",
-    "static/js/main.2a4b277a.js"
+    "static/js/main.f7a1a90e.js"
   ]
 }
