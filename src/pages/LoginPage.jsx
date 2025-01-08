@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import "./SignUpPage.css";
-import backButtonImage from "../assets/images/back.png";
-import logoImage from "../assets/images/Dey-go logo.png";
-import eyeIcon from "../assets/images/eye.png";
-import eyeSlashIcon from "../assets/images/eye-slash.svg";
+import React, { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import './SignUpPage.css';
+import backButtonImage from '../assets/images/back.png';
+import logoImage from '../assets/images/Dey-go logo.png';
+import eyeIcon from '../assets/images/eye.png';
+import eyeSlashIcon from '../assets/images/eye-slash.svg';
 
 function LoginPage() {
   const [formData, setFormData] = useState({
-    username: "",
-    password: "",
+    username: '',
+    password: '',
   });
   const [showPassword, setShowPassword] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -22,53 +22,53 @@ function LoginPage() {
   };
 
   const togglePasswordVisibility = () => {
-    setShowPassword((prev) => !prev);
+    setShowPassword(!showPassword);
   };
 
-  const handleLogin = async () => {
-    const { username, password } = formData;
+  const allFieldsFilled = formData.username && formData.password;
 
-    if (username && password) {
+  const handleLogin = async () => {
+    if (allFieldsFilled) {
       setIsLoading(true);
-      setErrorMessage("");
+      setErrorMessage('');
 
       try {
+        const payload = {
+          username: formData.username,
+          password: formData.password,
+        };
+
         const response = await fetch(
-          "https://tozdti5qo7.execute-api.us-east-1.amazonaws.com/Prod/api/auth/login",
+          'https://tozdti5qo7.execute-api.us-east-1.amazonaws.com/Prod/api/auth/login',
           {
-            method: "POST",
+            method: 'POST',
             headers: {
-              "Content-Type": "application/json", // Explicitly sending JSON payload
+              'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ username, password }), // JSON payload
+            body: JSON.stringify(payload), // Use JSON.stringify for the payload
           }
         );
 
-        if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(errorData.message || "Login failed. Please try again.");
+        const result = await response.json();
+
+        if (response.ok) {
+          navigate('/dashboard'); // Redirect user on successful login
+        } else {
+          setErrorMessage(result.message || 'Failed to login. Please try again.');
         }
-
-        const data = await response.json();
-        console.log("Login successful:", data);
-
-        navigate("/dashboard");
       } catch (error) {
-        console.error("Error during login:", error);
-        setErrorMessage(error.message || "An error occurred. Please try again.");
+        setErrorMessage('An error occurred. Please try again later.');
       } finally {
         setIsLoading(false);
       }
     }
   };
 
-  const allFieldsFilled = formData.username && formData.password;
-
   return (
     <div className="signup-page">
       <div className="main-container">
         <div className="icon-section">
-          <button className="back-button" onClick={() => navigate(-1)}>
+          <button className="back-button">
             <img src={backButtonImage} alt="Back" className="icon-image" />
           </button>
           <div className="logo">
@@ -93,25 +93,21 @@ function LoginPage() {
           </div>
           <div className="input-field">
             <input
-              type={showPassword ? "text" : "password"}
+              type={showPassword ? 'text' : 'password'}
               className="input-box"
               placeholder=" "
               name="password"
               value={formData.password}
               onChange={handleInputChange}
               required
-              pattern="^(?=.*\d)(?=.*[a-zA-Z]).{8,}$"
+              pattern="^(?=.*\\d)(?=.*[a-zA-Z]).{8,}$"
               title="Password must be at least 8 characters long and include at least one number"
             />
             <label className="input-label">Password</label>
-            <button
-              type="button"
-              className="toggle-password"
-              onClick={togglePasswordVisibility}
-            >
+            <button type="button" className="toggle-password" onClick={togglePasswordVisibility}>
               <img
                 src={showPassword ? eyeIcon : eyeSlashIcon}
-                alt={showPassword ? "Hide Password" : "Show Password"}
+                alt={showPassword ? 'Hide Password' : 'Show Password'}
               />
             </button>
           </div>
@@ -123,12 +119,12 @@ function LoginPage() {
           className="create-account-button"
           onClick={handleLogin}
           style={{
-            backgroundColor: allFieldsFilled ? "#FB3D3D" : "rgba(251, 61, 61, 0.13)",
-            color: allFieldsFilled ? "white" : "rgba(0, 0, 0, 0.3)",
+            backgroundColor: allFieldsFilled ? '#FB3D3D' : 'rgba(251, 61, 61, 0.13)',
+            color: allFieldsFilled ? 'white' : 'rgba(0, 0, 0, 0.3)',
           }}
           disabled={!allFieldsFilled || isLoading}
         >
-          {isLoading ? "Logging in..." : "Login"}
+          {isLoading ? 'Logging in...' : 'Login'}
         </button>
 
         <div className="login-footer">
